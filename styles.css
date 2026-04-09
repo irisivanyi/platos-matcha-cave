@@ -1,0 +1,161 @@
+/* Design tokens from Figma (mobile 4:3, desktop 6:7) */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-accent: #5177ff;
+  --font-body: "TASA Orbiter", system-ui, sans-serif;
+  --space-lead-inner: calc(12px * 16 / 14);
+  --space-section: calc(22px * 16 / 14);
+  --space-shell: 16px;
+  --title-size: 34px;
+  --body-size: 16px;
+  --body-leading: calc(18px * 16 / 14);
+  --body-tracking: calc(-0.14px * 16 / 14);
+  --shell-max: 1440px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Root handles horizontal overflow so the ASCII block isn’t a nested scroll trap. */
+  overflow-x: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  letter-spacing: var(--body-tracking);
+  line-height: var(--body-leading);
+}
+
+.page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding: var(--space-shell);
+  max-width: 100%;
+}
+
+@media (min-width: 960px) {
+  .shell {
+    width: var(--shell-max);
+    margin: 0 auto;
+  }
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lead-inner);
+}
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lead-inner);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--title-size);
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+.meta {
+  margin: 0;
+  font-size: var(--body-size);
+  line-height: var(--body-leading);
+}
+
+.meta__accent {
+  color: var(--color-accent);
+}
+
+.meta__accent time {
+  color: inherit;
+}
+
+.meta__plain {
+  color: var(--color-text);
+}
+
+/* ASCII block — Figma applied rotate(180deg) scaleY(-1); without it the braille grid reads horizontally flipped vs the file preview. */
+.ascii-wrap {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.ascii-visual {
+  flex-shrink: 0;
+  width: max-content;
+  max-width: 100%;
+  transform: rotate(180deg) scaleY(-1);
+}
+
+.ascii {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  direction: ltr;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 13px;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--space-section));
+}
+
+.post {
+  margin: 0;
+}
+
+.post p {
+  margin: 0;
+}
+
+.post__date {
+  color: var(--color-accent);
+}
+
+.post__date time {
+  color: inherit;
+}
+
+.post__body {
+  color: var(--color-text);
+}
+
+.posts__status {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.posts__error {
+  margin: 0;
+  color: var(--color-text);
+}
